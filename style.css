@@ -1,0 +1,542 @@
+:root {
+    --text-blue: #1e3a63;
+    --text-light-blue: #2a5a8f;
+    --bg-page: #fcfdfe;
+    --bg-box: #eef5fb;
+    --border-blue: #9abedc;
+    --accent-gold-light: #fad674;
+    --accent-gold: #f2ad23;
+    --accent-gold-dark: #d89617;
+    --signature-purple: #c4a7f0;
+    --table-header-bg: #8bb7d9;
+    --body-bg: #b0c9db;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--body-bg);
+    /* Adding a slight noise texture for the background board */
+    background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    color: var(--text-blue);
+    position: relative;
+}
+
+/* Paper Container Simulation */
+.paper-container {
+    width: 100%;
+    max-width: 800px;
+    background: var(--bg-page);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* Rounded corners combined with scalloped effect if possible, else just rounded */
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wavy borders - using a repeated SVG background for the top and bottom edge */
+.scalloped-border {
+    height: 16px;
+    width: 100%;
+    background-color: var(--bg-page);
+    position: relative;
+    z-index: 2;
+}
+
+.scalloped-border.top {
+    border-radius: 8px 8px 0 0;
+    border-top: 4px solid var(--border-blue);
+    border-bottom: 2px dashed var(--border-blue);
+    background-image: radial-gradient(circle at 10px -5px, transparent 12px, var(--bg-page) 13px);
+    background-size: 20px 100%;
+    background-position: center bottom;
+}
+
+.scalloped-border.bottom {
+    border-radius: 0 0 8px 8px;
+    border-bottom: 4px solid var(--border-blue);
+    height: 60px;
+    background-color: var(--bg-box);
+    border-top: 1px dashed var(--border-blue);
+    position: relative;
+}
+
+/* Add stars to bottom footer */
+.footer-design {
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 40px;
+    border-bottom: 2px dashed var(--border-blue);
+    border-radius: 50%;
+}
+
+.footer-design::before {
+    content: '🌙';
+    position: absolute;
+    left: 0;
+    top: -5px;
+    font-size: 24px;
+    color: var(--accent-gold);
+}
+
+.footer-design::after {
+    content: '⭐';
+    position: absolute;
+    right: 0;
+    top: 5px;
+    font-size: 16px;
+    color: var(--accent-gold);
+}
+
+.journal-content {
+    padding: 2.5rem 2rem;
+    background: var(--bg-page);
+    flex-grow: 1;
+}
+
+/* Header Grid Layout */
+.header {
+    display: grid;
+    grid-template-columns: 140px 1fr 220px;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid var(--border-blue);
+    padding: 5px;
+}
+
+.title-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-blue);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.info-row {
+    display: flex;
+    white-space: nowrap;
+}
+
+.info-row .label {
+    min-width: 60px;
+}
+
+.info-row .line {
+    flex-grow: 1;
+    color: #a0a0a0;
+    overflow: hidden;
+    margin-left: 5px;
+}
+
+/* Rating Box Layout */
+.rating-area {
+    height: 100%;
+}
+
+.rating-box {
+    border: 2px solid var(--border-blue);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 13px;
+    font-weight: 500;
+    background-color: var(--bg-page);
+}
+
+.stars {
+    font-size: 24px;
+    color: #ddd;
+    display: flex;
+    gap: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.star {
+    cursor: pointer;
+}
+
+.star.active {
+    color: var(--accent-gold);
+}
+
+.paraf-row .line {
+    color: #a0a0a0;
+}
+
+/* Decorative Title Banner */
+.decorative-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+    border-top: 1px solid var(--border-blue);
+    border-bottom: 1px solid var(--border-blue);
+    padding: 1.5rem 0;
+}
+
+.deco-icon {
+    width: 40px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.banner-title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-blue);
+    letter-spacing: 1px;
+}
+
+.banner-title .line-2 {
+    font-size: 26px;
+}
+
+.banner-title .highlight {
+    color: var(--accent-gold-dark);
+}
+
+/* Instructions Box */
+.instructions-box {
+    background-color: var(--bg-box);
+    border: 2px solid var(--border-blue);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.instructions-content {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 15px;
+    align-items: flex-start;
+}
+
+.petunjuk-label {
+    font-weight: 800;
+    color: var(--text-blue);
+    background-color: var(--border-blue);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.monitored-activities {
+    background-color: var(--bg-page);
+    border: 1px dashed var(--border-blue);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.monitored-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.star-icon {
+    color: var(--accent-gold);
+}
+
+.activity-list {
+    list-style: none;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-left: 1rem;
+}
+
+.activity-list li span {
+    color: var(--text-light-blue);
+    margin-right: 8px;
+    font-size: 10px;
+}
+
+/* Tracking Tables */
+.tracking-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.tracking-table {
+    background-color: var(--bg-page);
+    border-radius: 12px;
+    border: 2px solid var(--border-blue);
+    overflow: hidden;
+}
+
+.table-header-row {
+    display: flex;
+    background-color: var(--table-header-bg);
+    padding: 0.5rem;
+    align-items: stretch;
+}
+
+.date-badge-col {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
+    width: 180px;
+    flex-shrink: 0;
+}
+
+.date-badge {
+    background: linear-gradient(90deg, var(--accent-gold-light), var(--accent-gold));
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-blue);
+    border: 1px solid var(--accent-gold-dark);
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.days-headers {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.day-header,
+.day-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-blue);
+}
+
+.day-header {
+    background-color: var(--bg-page);
+    border: 2px solid var(--text-blue);
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.table-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.tracking-row {
+    display: flex;
+    border-top: 1px solid var(--border-blue);
+    align-items: center;
+    background-color: var(--bg-box);
+}
+
+.tracking-row:nth-child(even) {
+    background-color: var(--bg-page);
+}
+
+.activity-name {
+    width: 180px;
+    padding: 0.8rem 1rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-blue);
+    flex-shrink: 0;
+}
+
+.activity-name::before {
+    content: '●';
+    color: var(--text-light-blue);
+    margin-right: 8px;
+    font-size: 10px;
+}
+
+.check-circles {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-left: 2px solid var(--border-blue);
+    background-color: var(--bg-page);
+}
+
+.day-circle {
+    background-color: var(--bg-page);
+    border: 2px solid var(--text-blue);
+    cursor: pointer;
+    transition: all 0.2s;
+    color: transparent;
+}
+
+.day-circle:hover {
+    background-color: #f0f0f0;
+}
+
+.day-circle.checked {
+    background-color: var(--text-blue);
+    color: white;
+}
+
+.day-circle.checked::after {
+    content: '✔';
+    font-size: 16px;
+}
+
+/* Secondary table styles */
+.tracking-table.secondary .table-header-row {
+    background-color: var(--table-header-bg);
+}
+
+.signature-spacer {
+    width: 250px;
+}
+
+/* Signature Box absolute positioning */
+.signature-container {
+    position: absolute;
+    bottom: -40px;
+    right: 20px;
+    width: 280px;
+    height: 120px;
+    z-index: 10;
+}
+
+.signature-box-shadow {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.signature-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--signature-purple);
+    border-radius: 20px;
+    border: 3px solid #000;
+    z-index: 2;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signature-label {
+    background-color: var(--bg-page);
+    padding: 4px 16px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 14px;
+    border: 2px solid #000;
+    transform: translateY(-20px);
+}
+
+.signature-line {
+    font-weight: 800;
+    color: #000;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .info-row {
+        justify-content: center;
+    }
+
+    .rating-box {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .decorative-banner {
+        flex-direction: column;
+    }
+
+    .tracking-table {
+        overflow-x: auto;
+    }
+
+    .table-header-row,
+    .tracking-row {
+        min-width: 600px;
+    }
+
+    .signature-container {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin: 2rem auto;
+    }
+}
