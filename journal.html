@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurnal Kegiatan Ramadhan</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="paper-container">
+        <!-- Top wavy border simulation -->
+        <div class="scalloped-border top"></div>
+
+        <div class="journal-content">
+            <header class="header">
+                <div class="logo-area">
+                    <img src="assets/logo.png" alt="Logo SMP IT Al Burhan" class="logo">
+                </div>
+
+                <div class="title-area">
+                    <h1 class="main-title">SMP IT<br>AL BURHAN</h1>
+                    <div class="student-info">
+                        <div class="info-row">
+                            <span class="label">Nama</span>
+                            <span
+                                class="line">.......................................................................</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Kelas</span>
+                            <span
+                                class="line">.......................................................................</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Sekolah / Pesantren:</span>
+                            <span class="line">......................................................</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rating-area">
+                    <div class="rating-box">
+                        <div class="rating-header">
+                            <span class="box-label">Penilaian:</span>
+                        </div>
+                        <div class="stars" id="rating-stars">
+                            <span class="star" data-value="1">☆</span>
+                            <span class="star" data-value="2">☆</span>
+                            <span class="star" data-value="3">☆</span>
+                            <span class="star" data-value="4">☆</span>
+                            <span class="star" data-value="5">☆</span>
+                        </div>
+                        <div class="nilai-row">
+                            <span class="box-label">Nilai:</span>
+                        </div>
+                        <div class="paraf-row">
+                            <span class="box-label">Paraf Pembimbing:</span>
+                            <span class="line">...................</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="decorative-banner">
+                <img src="assets/decoration-left.png" class="deco-icon lantern" alt="">
+                <h2 class="banner-title">
+                    <span class="line-1">JURNAL KEGIATAN</span>
+                    <span class="line-2">RAMADHAN <span class="highlight">SANTRI SMP</span></span>
+                </h2>
+                <img src="assets/decoration-right.png" class="deco-icon moon" alt="">
+            </div>
+
+            <div class="instructions-box">
+                <div class="instructions-content">
+                    <div class="petunjuk-label">Petunjuk</div>
+                    <div class="petunjuk-text">
+                        Beri tanda cek (✔) atau warna pada lingkaran setiap kali kamu menyelesaikan kegiatan ibadah pada
+                        hari tersebut.
+                    </div>
+                </div>
+
+                <div class="monitored-activities">
+                    <div class="monitored-title">
+                        <span class="star-icon">★</span> Kegiatan yang <strong>dipantau</strong>
+                    </div>
+                    <ul class="activity-list">
+                        <li><span>●</span> Puasa Ramadhan</li>
+                        <li><span>●</span> Tilawah / Tadarus Al-Qur'an</li>
+                        <li><span>●</span> Shalat Tarawih</li>
+                        <li><span>●</span> Sedekah / Amal kebaikan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tracking-section">
+                <!-- Table for dates 18-26 -->
+                <div class="tracking-table">
+                    <div class="table-header-row">
+                        <div class="date-badge-col">
+                            <div class="date-badge">
+                                <span class="star-sparkle">✦</span> Tanggal <strong>18-26</strong>
+                            </div>
+                        </div>
+                        <div class="days-headers" id="days-header-1">
+                            <!-- JS populated -->
+                        </div>
+                    </div>
+                    <div class="table-body" id="table-body-1">
+                        <!-- JS populated -->
+                    </div>
+                </div>
+
+                <!-- Table for dates 27-30 -->
+                <div class="tracking-table secondary">
+                    <div class="table-header-row">
+                        <div class="date-badge-col">
+                            <div class="date-badge">
+                                <span class="star-sparkle">✦</span> Tanggal <strong>27-30</strong>
+                            </div>
+                        </div>
+                        <div class="days-headers" id="days-header-2">
+                            <!-- JS populated -->
+                        </div>
+                        <!-- Empty space to align with signature box -->
+                        <div class="signature-spacer"></div>
+                    </div>
+                    <div class="table-body" id="table-body-2">
+                        <!-- JS populated -->
+                    </div>
+
+                    <!-- Signature Box Absolute Positioned over table 2 -->
+                    <div class="signature-container">
+                        <div class="signature-box-shadow"></div>
+                        <div class="signature-box">
+                            <div class="signature-label">Tanda Tangan Orang Tua</div>
+                            <div class="signature-line">................................................</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- end journal content -->
+
+        <div class="scalloped-border bottom">
+            <div class="footer-design"></div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
